@@ -41,6 +41,13 @@ Version:     1.6.0
 
 Place `wp-plugin-builder.ps1` at the repository root. No external dependencies required.
 
+## Basic usage
+If your script is in the same folder as your plugin and you just want a simple ZIP:
+
+```powershell
+./wp-plugin-builder.ps1
+```
+
 ## 📂 Real Usage Example with Parameters
 
 This example creates a versioned plugin ZIP ready to upload to WordPress:
@@ -250,6 +257,13 @@ Version:     1.6.0
 ### Instalación
 
 Coloca `wp-plugin-builder.ps1` en la raíz del repositorio. No requiere dependencias externas.
+
+## Uso Básico
+Si colocas el script en el mismo folder que tu plugin y solo necesitas que cree el zip (Se creará dentro de la carpeta /dist):
+
+```powershell
+./wp-plugin-builder.ps1
+```
 
 ## 📂 Ejemplo de uso real con parámetros
 
