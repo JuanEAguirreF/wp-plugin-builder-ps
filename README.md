@@ -178,7 +178,7 @@ git push origin v1.6.0
 - Excludes applied (`node_modules`, `dist`, `.git`, `*.md`, etc.)
 - (Optional) Sort files before zipping for stable builds
 
-### Roadmap
+### Roadmap (Maybe not)
 
 - Support `.distignore`/`.gitattributes`-style excludes
 - Package as a PowerShell module and/or composite Action
@@ -364,7 +364,7 @@ git push origin v1.6.0
 - Exclusiones aplicadas (`node_modules`, `dist`, `.git`, `*.md`, etc.)
 - (Opcional) Ordenar archivos antes de zipear para builds estables
 
-### Roadmap
+### Roadmap (Tal vez no lo haga)
 
 - Soporte a exclusiones estilo `.distignore`/`.gitattributes`
 - Publicarlo como módulo PowerShell / Action compuesta
