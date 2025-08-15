@@ -41,21 +41,32 @@ Version:     1.6.0
 
 Place `wp-plugin-builder.ps1` at the repository root. No external dependencies required.
 
-### Usage
+## 📂 Real Usage Example with Parameters
 
-Basic:
-
-```powershell
-./wp-plugin-builder.ps1 -SourcePath . -OutputPath dist
-```
-
-Create a versioned ZIP too (if `Version:` exists in the header):
+This example creates a versioned plugin ZIP ready to upload to WordPress:
 
 ```powershell
-./wp-plugin-builder.ps1 -SourcePath . -OutputPath dist -CreateVersioned
+# Plugin source folder
+$source = "C:\path\to\my-plugin"
+
+# Output folder for the ZIP file
+$output = "C:\path\to\zips"
+
+# Run script
+./wp-plugin-builder.ps1 -SourcePath $source -OutputPath $output -CreateVersioned
 ```
 
-Include explicit paths only (optional):
+Main parameters:
+
+- `-SourcePath` → Folder containing your plugin.
+- `-OutputPath` → Folder where the ZIP will be saved.
+- `-CreateVersioned` → Appends the version number to the ZIP file name.
+
+---
+
+## 📦 Advanced Example with `-Include`
+
+You can also specify exactly which files and folders to include in the ZIP:
 
 ```powershell
 ./wp-plugin-builder.ps1 `
@@ -65,10 +76,23 @@ Include explicit paths only (optional):
   -CreateVersioned
 ```
 
-**Output**
+Or using *splatting* for cleaner syntax:
 
+```powershell
+$Params = @{
+  SourcePath      = .
+  OutputPath      = 'dist'
+  Include         = @('my-plugin.php','readme.txt','assets','includes','languages')
+  CreateVersioned = $true
+}
+./wp-plugin-builder.ps1 @Params
+```
+
+**Output:**
 - `dist/<plugin-slug>.zip`
 - `dist/<plugin-slug>-<version>.zip` (when `-CreateVersioned` and header `Version` exists)
+
+
 
 ### CI: GitHub Actions
 
@@ -227,21 +251,32 @@ Version:     1.6.0
 
 Coloca `wp-plugin-builder.ps1` en la raíz del repositorio. No requiere dependencias externas.
 
-### Uso
+## 📂 Ejemplo de uso real con parámetros
 
-Básico:
-
-```powershell
-./wp-plugin-builder.ps1 -SourcePath . -OutputPath dist
-```
-
-Crear también ZIP versionado (si existe `Version:` en el header):
+Este ejemplo crea un ZIP versionado del plugin, listo para subir a WordPress:
 
 ```powershell
-./wp-plugin-builder.ps1 -SourcePath . -OutputPath dist -CreateVersioned
+# Carpeta de origen del plugin
+$source = "C:\ruta\a\mi-plugin"
+
+# Carpeta de salida donde se guardará el ZIP
+$output = "C:\ruta\a\zips"
+
+# Ejecutar script
+./wp-plugin-builder.ps1 -SourcePath $source -OutputPath $output -CreateVersioned
 ```
 
-Incluir rutas específicas (opcional):
+Parámetros principales:
+
+- `-SourcePath` → Carpeta donde está tu plugin.
+- `-OutputPath` → Carpeta donde se guardará el archivo ZIP.
+- `-CreateVersioned` → Añade el número de versión al nombre del archivo ZIP.
+
+---
+
+## 📦 Ejemplo avanzado con `-Include`
+
+También puedes indicar exactamente qué archivos y carpetas incluir en el ZIP:
 
 ```powershell
 ./wp-plugin-builder.ps1 `
@@ -251,10 +286,22 @@ Incluir rutas específicas (opcional):
   -CreateVersioned
 ```
 
-**Salida**
+O usando *splatting* para mayor legibilidad:
 
-- `dist/<plugin-slug>.zip`
-- `dist/<plugin-slug>-<version>.zip` (si usas `-CreateVersioned` y hay `Version`)
+```powershell
+$Parametros = @{
+  SourcePath      = .
+  OutputPath      = 'dist'
+  Include         = @('mi-plugin.php','readme.txt','assets','includes','languages')
+  CreateVersioned = $true
+}
+./wp-plugin-builder.ps1 @Parametros
+```
+
+**Salida:**
+- `dist/<slug-del-plugin>.zip`
+- `dist/<slug-del-plugin>-<version>.zip` (cuando se usa `-CreateVersioned` y el encabezado `Version` existe)
+
 
 ### CI: GitHub Actions
 
